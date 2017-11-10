@@ -9,5 +9,5 @@ add_definitions(-DSTM32L051xx)
 set(STM32_LINKER_FLAGS "-T${LoRaMac_SOURCE_DIR}/boards/MoteII/cmsis/arm-gcc/stm32l051xx_flash.ld")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${STM32_LINKER_FLAGS}")
 
-add_executable(MoteIIapp-classA ${_sources})
-target_link_libraries(MoteIIapp-classA MoteII)
+add_executable(MoteIIapp-classC ${_sources})
+target_link_libraries(MoteIIapp-classC MoteII)

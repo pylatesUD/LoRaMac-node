@@ -1,21 +1,14 @@
 cmake_minimum_required (VERSION 2.6)
 file (GLOB_RECURSE _sources RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.c)
-#file (GLOB_RECURSE _system ${LoRaMac_SOURCE_DIR}/system *.c)
-#file (GLOB_RECURSE _peripherals ${LoRaMac_SOURCE_DIR}/peripherals *.c)
-#file (GLOB_RECURSE _radio ${LoRaMac_SOURCE_DIR}/radio *.c)
-#file (GLOB_RECURSE _mac ${LoRaMac_SOURCE_DIR}/mac *.c)
 
-add_definitions(-DSTM32L051xx -DUSE_HAL_DRIVER -DREGION_EU868)
+add_definitions(-DSTM32L051xx -DUSE_HAL_DRIVER)
 
 add_subdirectory("cmsis")
-
-#set(STM32_LINKER_FLAGS "-T ${LoRaMac_SOURCE_DIR}/boards/MoteII/cmsis/arm-gcc/stm32l051xx_flash.ld")
-#set(CMAKE_STATIC_LINKER_FLAGS "${CMAKE_STATIC_LINKER_FLAGS} ${STM32_LINKER_FLAGS}")
 
 set(STM32_LINKER_FLAGS "-T${LoRaMac_SOURCE_DIR}/boards/MoteII/cmsis/arm-gcc/stm32l051xx_flash.ld")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${STM32_LINKER_FLAGS}")
 
-add_library(MoteII ${_sources} 
+add_library(MoteII ${_sources}
 ${LoRaMac_SOURCE_DIR}/boards/mcu/stm32/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc.c
 ${LoRaMac_SOURCE_DIR}/boards/mcu/stm32/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal_adc_ex.c
 ${LoRaMac_SOURCE_DIR}/boards/mcu/stm32/STM32L0xx_HAL_Driver/Src/stm32l0xx_hal.c
@@ -40,18 +33,18 @@ ${LoRaMac_SOURCE_DIR}/boards/mcu/stm32/sysIrqHandlers.c
 ${LoRaMac_SOURCE_DIR}/boards/mcu/stm32/utilities.c
 ${LoRaMac_SOURCE_DIR}/mac/LoRaMac.c
 ${LoRaMac_SOURCE_DIR}/mac/LoRaMacCrypto.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionAS923.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionAU915.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionAS923.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionAU915.c
 ${LoRaMac_SOURCE_DIR}/mac/region/Region.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionCN470.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionCN779.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionCN470.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionCN779.c
 ${LoRaMac_SOURCE_DIR}/mac/region/RegionCommon.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionEU433.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionEU433.c
 ${LoRaMac_SOURCE_DIR}/mac/region/RegionEU868.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionIN865.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionKR920.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionUS915.c
-#${LoRaMac_SOURCE_DIR}/mac/region/RegionUS915-Hybrid.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionIN865.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionKR920.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionUS915.c
+${LoRaMac_SOURCE_DIR}/mac/region/RegionUS915-Hybrid.c
 ${LoRaMac_SOURCE_DIR}/peripherals/gpio-ioe.c
 ${LoRaMac_SOURCE_DIR}/peripherals/mag3110.c
 ${LoRaMac_SOURCE_DIR}/peripherals/mma8451.c
@@ -85,7 +78,4 @@ target_include_directories (MoteII PUBLIC "${LoRaMac_SOURCE_DIR}/mac")
 target_include_directories (MoteII PUBLIC "${LoRaMac_SOURCE_DIR}/mac/region")
 target_include_directories (MoteII PUBLIC ".")
 
-#target_link_libraries(MoteII stm32 STM32L0xx_HAL_Driver)
 target_link_libraries(MoteII)
-
-
