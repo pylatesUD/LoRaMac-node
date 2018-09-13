@@ -1,5 +1,9 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+    "cmake.generator":"MinGW Makefiles",
+    "cmake.mingwSearchDirs": [
+        "C:/Program Files (x86)/CodeBlocks/MinGW",
+    ],
     "cmake.configureSettings": {
 
         // In case your GNU ARM-Toolchain is not installed under the default
@@ -10,14 +14,14 @@
         //     Linux   : /usr
         //     OSX     : /usr/local
         // It is required to uncomment and to fill the following line.
-        //"TOOLCHAIN_PREFIX":"/path/to/toolchain",
+        "TOOLCHAIN_PREFIX":"D:/Program Files (x86)/GNU Tools Arm Embedded/7 2018-q2-update",
 
         // In case your OpenOCD is not installed under the default path:
         //     Windows : C:/openocd/bin/openocd.exe
         //     Linux   : /usr/bin/openocd
         //     OSX     : /usr/local/bin/openocd
         // Please uncomment the following line and fill it accordingly.
-        //"OPENOCD_BIN":"C:/openocd/bin/openocd.exe",
+        "OPENOCD_BIN":"C:/openocd/bin/openocd.exe",
 
         // Specifies the path to the CMAKE toolchain file.
         "CMAKE_TOOLCHAIN_FILE":"cmake/toolchain-arm-none-eabi.cmake",
@@ -42,7 +46,7 @@
 
         // Target board, the following boards are supported:
         // LoRaMote (Default), MoteII, NAMote72, NucleoL073, NucleoL152, SAML21, SensorNode and SK-iM880A.
-        "BOARD":"LoRaMote",
+        "BOARD":"MoteII",
 
         // MBED Radio shield selection. (Applies only to Nucleo platforms)
         // The following shields are supported:
@@ -61,5 +65,7 @@
         "REGION_KR920":"OFF",
         "REGION_IN865":"OFF",
         "REGION_US915_HYBRID":"OFF"
-    }
+    },
+    "cmake.cmakePath": "D:/Program Files/CMake/bin/cmake.exe",
+    "C_Cpp.default.configurationProvider": "vector-of-bool.cmake-tools"
 }
